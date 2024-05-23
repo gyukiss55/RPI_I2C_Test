@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
+#include <i2c/smbus.h>
 #include <stdio.h>
 // When the display powers up, it is configured as follows:
 //
@@ -49,6 +50,7 @@ void LiquidCrystal_I2C::begin() {
 
 	_fd = open(filename, O_RDWR);
 	int set_slave = ioctl(_fd, I2C_SLAVE, _addr);
+	(set_slave);
 
 	_displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
 
@@ -242,8 +244,8 @@ void LiquidCrystal_I2C::write4bits(uint8_t value) {
 }
 
 void LiquidCrystal_I2C::expanderWrite(uint8_t _data) {
-	//i2c_smbus_write_byte(_fd, (int)(_data) | _backlightval);
-	i2c_smbus_ioctl_data(_fd, (int)(_data) | _backlightval);
+	i2c_smbus_write_byte(_fd, (int)(_data) | _backlightval);
+	//i2c_smbus_ioctl_data(_fd, (int)(_data) | _backlightval);
 }
 
 void LiquidCrystal_I2C::pulseEnable(uint8_t _data) {
