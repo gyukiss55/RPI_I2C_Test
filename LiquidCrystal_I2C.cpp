@@ -63,7 +63,9 @@ void LiquidCrystal_I2C::begin() {
 
 	_fd = open(filename, O_RDWR);
 	int set_slave = ioctl(_fd, I2C_SLAVE, _addr);
-	(set_slave);
+	if (set_slave == 0) {
+
+	}
 
 	_displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
 
