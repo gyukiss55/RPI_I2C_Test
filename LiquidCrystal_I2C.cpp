@@ -242,7 +242,8 @@ void LiquidCrystal_I2C::write4bits(uint8_t value) {
 }
 
 void LiquidCrystal_I2C::expanderWrite(uint8_t _data) {
-	i2c_smbus_write_byte(_fd, (int)(_data) | _backlightval);
+	//i2c_smbus_write_byte(_fd, (int)(_data) | _backlightval);
+	i2c_smbus_ioctl_data(_fd, (int)(_data) | _backlightval);
 }
 
 void LiquidCrystal_I2C::pulseEnable(uint8_t _data) {
