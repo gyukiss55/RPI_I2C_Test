@@ -1,0 +1,10 @@
+rule compile
+  command = gcc -Wall -c $in -o $out
+ 
+rule link
+  command = gcc $in -o $out
+
+build RPI_I2C_Test.o: compile RPI_I2C_Test.c
+build LiquidCrystal_I2C.o: compile LiquidCrystal_I2C.c
+
+build RPI_I2C_Test: link RPI_I2C_Test.o LiquidCrystal_I2C.o
