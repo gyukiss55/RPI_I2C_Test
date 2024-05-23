@@ -1,22 +1,25 @@
 #include "LiquidCrystal_I2C.h"
+
+extern "C" {
 #include <inttypes.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
-//#include <i2c/smbus.h> // cannot find !!!!
+	//#include <i2c/smbus.h> // cannot find !!!!
 
-extern __s32 i2c_smbus_access(int file, char read_write, __u8 command,
-	int size, union i2c_smbus_data* data);
+	extern __s32 i2c_smbus_access(int file, char read_write, __u8 command,
+		int size, union i2c_smbus_data* data);
 
-extern __s32 i2c_smbus_write_quick(int file, __u8 value);
-extern __s32 i2c_smbus_read_byte(int file);
-extern __s32 i2c_smbus_write_byte(int file, __u8 value);
-extern __s32 i2c_smbus_read_byte_data(int file, __u8 command);
-extern __s32 i2c_smbus_write_byte_data(int file, __u8 command, __u8 value);
-extern __s32 i2c_smbus_read_word_data(int file, __u8 command);
-extern __s32 i2c_smbus_write_word_data(int file, __u8 command, __u16 value);
-extern __s32 i2c_smbus_process_call(int file, __u8 command, __u16 value);
+	extern __s32 i2c_smbus_write_quick(int file, __u8 value);
+	extern __s32 i2c_smbus_read_byte(int file);
+	extern __s32 i2c_smbus_write_byte(int file, __u8 value);
+	extern __s32 i2c_smbus_read_byte_data(int file, __u8 command);
+	extern __s32 i2c_smbus_write_byte_data(int file, __u8 command, __u8 value);
+	extern __s32 i2c_smbus_read_word_data(int file, __u8 command);
+	extern __s32 i2c_smbus_write_word_data(int file, __u8 command, __u16 value);
+	extern __s32 i2c_smbus_process_call(int file, __u8 command, __u16 value);
+}
 
 #include <stdio.h>
 // When the display powers up, it is configured as follows:
