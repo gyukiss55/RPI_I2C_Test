@@ -11,8 +11,9 @@
   * Created on November 12, 2018, 12:32 AM
   */
 
-#include <cstdlib>
-#include <iostream>
+//#include <cstdlib>
+//#include <iostream>
+#include <stdlib.h>
 #include "LiquidCrystal_I2C.h"
 using namespace std;
 
@@ -21,7 +22,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     if (argc < 2) {
-        cout << "No string specified" << endl;
+        printf("No string specified\r\n");
         return EXIT_FAILURE;
     }
 
