@@ -6,6 +6,6 @@ rule link
   command = gcc $in -o $out
 
 build RPI_I2C_Test.o: compile RPI_I2C_Test.c
-build LiquidCrystal_I2C.o: compile LiquidCrystal_I2C.cpp  -li2c
+build LiquidCrystal_I2C.o: compile LiquidCrystal_I2C.cpp  -libpigpio
 
 build RPI_I2C_Test: link RPI_I2C_Test.o LiquidCrystal_I2C.o
